@@ -20,7 +20,9 @@ public class ConfigProvider implements Provider<BillingConfig> {
 		
 		Properties properties = new Properties();
 		try {
-			properties.load(this.getClass().getResourceAsStream("config.properties"));
+			System.out.println("Loading the resource...");
+			properties.load(this.getClass().getClassLoader().getResourceAsStream("config.properties"));
+			System.out.println("resource loading complete..");
 		} catch (IOException e) {
 			return new Properties();
 		}
